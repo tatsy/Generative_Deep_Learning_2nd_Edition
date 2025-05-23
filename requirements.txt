@@ -1,0 +1,12 @@
+numpy>=1.26.0,<2.0.0
+matplotlib
+tqdm
+rich
+jupyter
+ipywidgets
+ipykernel
+lightning[extra]
+
+--extra-index-url https://download.pytorch.org/whl/cu124
+torch==2.4.1
+torchvision==0.19.1
