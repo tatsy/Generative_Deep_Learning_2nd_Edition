@@ -1,0 +1,83 @@
+[project]
+name = "GenDL"
+version = "0.1.0"
+description = ""
+requires-python = ">=3.10,<3.13"
+dependencies = [
+  "numpy (>=1.26.0,<2.0.0)",
+  "matplotlib (>=3.10.3,<4.0.0)",
+  "lightning[extra] (>=2.4.0,<2.5.1)",
+  "tqdm (>=4.67.1,<5.0.0)",
+  "jupyter (>=1.1.1,<2.0.0)",
+  "ipywidgets (>=8.1.7,<9.0.0)",
+  "ipykernel (>=6.29.5,<7.0.0)",
+  "rich[jupyter] (<14.0.0)",
+  "torch",
+  "torchvision",
+]
+
+[tool.poetry]
+packages = [{ include = "notebooks" }]
+
+[tool.poetry.dependencies]
+torch = [
+  { version = "2.4.1", markers = "sys_platform == 'win32'", source = "pytorch-cu124" },
+  { version = "2.4.1", markers = "sys_platform == 'linux'", source = "pytorch-cu124" },
+  { version = "2.4.1", markers = "sys_platform == 'darwin'", source = "pypi" },
+]
+
+torchvision = [
+  { version = "0.19.1", markers = "sys_platform == 'win32'", source = "pytorch-cu124" },
+  { version = "0.19.1", markers = "sys_platform == 'linux'", source = "pytorch-cu124" },
+  { version = "0.19.1", markers = "sys_platform == 'darwin'", source = "pypi" },
+]
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+autopep8 = "^2.3.2"
+flake8-pyproject = "^1.2.3"
+isort = "^6.0.1"
+mypy = "^1.16.0"
+
+[[tool.poetry.source]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+priority = "explicit"
+
+[build-system]
+requires = ["setuptools", "poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+length_sort = true
+line_length = 120
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = false
+use_parentheses = true
+known_third_party = ["numpy", "torch", "wandb"]
+skip_glob = [
+  "**/build/**",
+  "**/.mypy_cache/**",
+  "**/.pytest_cache/**",
+  "**/.vscode/**",
+]
+
+[tool.mypy]
+python_version = "3.11"
+follow_imports = "silent"
+plugins = ["numpy.typing.mypy_plugin"]
+disallow_any_generics = true
+strict_optional = true
+check_untyped_defs = true
+allow_redefinition = true
+
+[tool.flake8]
+max-line-length = 120
+ignore = "Q000,E127,E203,E402,W503,W504"
+
+[tool.black]
+target-version = ["py311"]
+line-length = 120
+skip-string-normalization = true
