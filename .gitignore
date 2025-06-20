@@ -1,5 +1,7 @@
 .venv
 data
 lightning_logs
+models
+data
 
 *.pyc
