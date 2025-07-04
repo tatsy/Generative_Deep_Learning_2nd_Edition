@@ -5,3 +5,4 @@ models
 data
 
 *.pyc
+.DS_Store
