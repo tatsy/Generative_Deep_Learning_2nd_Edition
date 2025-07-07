@@ -3,6 +3,7 @@ data
 lightning_logs
 models
 data
+checkpoint
 
 *.pyc
 .DS_Store

@@ -38,6 +38,7 @@ autopep8 = "^2.3.2"
 flake8-pyproject = "^1.2.3"
 isort = "^6.0.1"
 mypy = "^1.16.0"
+kaggle = "^1.7.4.5"
 
 [[tool.poetry.source]]
 name = "pytorch-cu124"
